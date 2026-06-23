@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BelajarCeria - Platform Produk Digital Edukasi Anak</title>
+    <title>BelajarCeria.id - Belajar Jadi Menyenangkan</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <!-- Google Font: Nunito (ramah anak) -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Google Font: Quicksand (ramah anak & modern) -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -16,10 +17,10 @@
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            background-color: #fefcf3;
+            font-family: 'Quicksand', sans-serif;
+            background: #fefcf3;
             color: #2d2d2d;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -33,14 +34,63 @@
             padding: 0 20px;
         }
 
+        /* ===== DECORATIVE SHAPES (Background) ===== */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-shapes .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: #f9a826;
+            top: -50px;
+            right: -80px;
+        }
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: #4A90D9;
+            bottom: 100px;
+            left: -60px;
+        }
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: #f76b8a;
+            top: 40%;
+            right: 10%;
+        }
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            background: #6fcf97;
+            bottom: 20%;
+            left: 20%;
+        }
+
         /* ===== NAVBAR ===== */
         .navbar {
-            background: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            padding: 16px 0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 14px 0;
             position: sticky;
             top: 0;
             z-index: 999;
+            border-bottom: 3px solid #f9a826;
         }
 
         .navbar .container {
@@ -51,12 +101,16 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
+            font-size: 1.9rem;
+            font-weight: 700;
             color: #f9a826;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
         }
 
         .logo span {
@@ -65,13 +119,30 @@
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 30px;
             font-weight: 600;
         }
 
         .nav-links a {
-            transition: color 0.2s;
+            transition: all 0.2s;
             font-size: 1.05rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #f9a826;
+            transition: width 0.3s;
+            border-radius: 10px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -80,38 +151,41 @@
 
         .nav-actions {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             align-items: center;
         }
 
         .btn-outline {
-            padding: 8px 20px;
-            border: 2px solid #4A90D9;
-            border-radius: 30px;
+            padding: 8px 22px;
+            border: 2.5px solid #4A90D9;
+            border-radius: 40px;
             color: #4A90D9;
             font-weight: 700;
             transition: all 0.2s;
+            background: transparent;
         }
 
         .btn-outline:hover {
             background: #4A90D9;
             color: #fff;
+            transform: scale(1.05);
         }
 
         .btn-primary {
-            padding: 8px 24px;
-            background: #f9a826;
-            border-radius: 30px;
+            padding: 10px 26px;
+            background: linear-gradient(135deg, #f9a826, #f5b84a);
+            border-radius: 40px;
             color: #fff;
             font-weight: 700;
             transition: all 0.2s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(249, 168, 38, 0.3);
         }
 
         .btn-primary:hover {
-            background: #e6951a;
-            transform: scale(1.02);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 25px rgba(249, 168, 38, 0.4);
         }
 
         .hamburger {
@@ -121,16 +195,16 @@
             color: #4A90D9;
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO SECTION ===== */
         .hero {
-            padding: 60px 0 40px;
-            background: linear-gradient(135deg, #fefcf3 0%, #f0f7ff 100%);
+            padding: 40px 0 30px;
+            position: relative;
         }
 
         .hero .container {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
             flex-wrap: wrap;
         }
 
@@ -139,25 +213,29 @@
         }
 
         .hero-text .badge {
-            background: #f9a82620;
+            background: linear-gradient(135deg, #f9a82620, #f9a82640);
             color: #f9a826;
             font-weight: 700;
-            padding: 6px 18px;
+            padding: 8px 22px;
             border-radius: 40px;
             display: inline-block;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-size: 0.9rem;
+            border: 2px solid #f9a82660;
         }
 
         .hero-text h1 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 3.2rem;
+            font-weight: 700;
             line-height: 1.2;
             color: #1a2a4a;
         }
 
         .hero-text h1 .highlight {
-            color: #f9a826;
+            background: linear-gradient(135deg, #f9a826, #f76b8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-text p {
@@ -165,6 +243,7 @@
             margin: 20px 0 30px;
             color: #555;
             max-width: 500px;
+            line-height: 1.8;
         }
 
         .hero-buttons {
@@ -174,12 +253,12 @@
         }
 
         .hero-buttons .btn-primary {
-            padding: 14px 36px;
+            padding: 14px 38px;
             font-size: 1.1rem;
         }
 
         .hero-buttons .btn-outline {
-            padding: 12px 32px;
+            padding: 12px 34px;
             font-size: 1.1rem;
         }
 
@@ -188,21 +267,64 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
-        .hero-image img {
-            max-width: 100%;
-            width: 500px;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        .hero-image .illustration {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(74, 144, 217, 0.15);
+            transition: transform 0.3s;
         }
 
-        /* ===== STATS ===== */
+        .hero-image .illustration:hover {
+            transform: scale(1.02) rotate(-1deg);
+        }
+
+        /* Floating decoration on hero image */
+        .float-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .float-icon-1 {
+            top: -10px;
+            left: -20px;
+            color: #f9a826;
+            animation-delay: 0s;
+        }
+        .float-icon-2 {
+            bottom: 10px;
+            right: -15px;
+            color: #f76b8a;
+            animation-delay: 1s;
+        }
+        .float-icon-3 {
+            top: 50%;
+            right: -30px;
+            color: #4A90D9;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* ===== STATS SECTION ===== */
         .stats {
-            background: #fff;
             padding: 30px 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            border-top: 3px dashed #f9a82640;
+            border-bottom: 3px dashed #4A90D940;
         }
 
         .stats .container {
@@ -214,82 +336,129 @@
 
         .stat-item {
             text-align: center;
+            padding: 10px 25px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            min-width: 140px;
+            transition: transform 0.2s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
         }
 
         .stat-item h3 {
             font-size: 2.2rem;
             color: #4A90D9;
+            font-weight: 700;
         }
 
         .stat-item p {
             font-weight: 600;
             color: #555;
+            font-size: 0.95rem;
         }
 
-        /* ===== PRODUK UNGGULAN ===== */
+        .stat-item .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
         .products {
             padding: 60px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 12px;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
             color: #1a2a4a;
+        }
+
+        .section-title .emoji-big {
+            font-size: 2.8rem;
         }
 
         .section-sub {
             text-align: center;
             color: #666;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
             font-size: 1.1rem;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
         }
 
         .product-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 24px 20px 28px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            transition: all 0.25s;
+            background: white;
+            border-radius: 30px;
+            padding: 28px 22px 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
             text-align: center;
-            border: 1px solid #f0f0f0;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #f9a826, #f76b8a, #4A90D9, #6fcf97);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-            border-color: #f9a82660;
+            transform: translateY(-10px);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.1);
+            border-color: #f9a82640;
         }
 
         .product-card .icon {
-            font-size: 2.8rem;
-            color: #4A90D9;
+            font-size: 3.2rem;
             margin-bottom: 12px;
+            display: block;
         }
 
         .product-card h4 {
             font-size: 1.3rem;
             font-weight: 700;
+            color: #1a2a4a;
+        }
+
+        .product-card .desc {
+            color: #777;
+            font-size: 0.95rem;
+            margin: 8px 0 12px;
         }
 
         .product-card .price {
             color: #f9a826;
-            font-weight: 800;
-            font-size: 1.4rem;
-            margin: 8px 0 16px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 6px 0 16px;
         }
 
         .product-card .btn-small {
-            background: #4A90D9;
+            background: linear-gradient(135deg, #4A90D9, #5b9fe0);
             color: #fff;
-            padding: 10px 24px;
+            padding: 10px 28px;
             border-radius: 40px;
             font-weight: 700;
             font-size: 0.95rem;
@@ -297,127 +466,214 @@
             transition: all 0.2s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(74, 144, 217, 0.25);
         }
 
         .product-card .btn-small:hover {
-            background: #3a7bc8;
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(74, 144, 217, 0.35);
         }
 
         .badge-mrr {
-            background: #f9a826;
+            background: linear-gradient(135deg, #f9a826, #f76b8a);
             color: #fff;
             font-size: 0.7rem;
             font-weight: 700;
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 20px;
             display: inline-block;
-            margin-top: 6px;
+            margin-top: 10px;
             letter-spacing: 0.5px;
         }
 
-        /* ===== TESTIMONI ===== */
+        .badge-popular {
+            background: linear-gradient(135deg, #6fcf97, #27ae60);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== TESTIMONIALS ===== */
         .testimonials {
-            background: #f0f7ff;
             padding: 60px 0;
+            background: linear-gradient(135deg, #f0f7ff, #fff5e6);
         }
 
         .testi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 20px;
         }
 
         .testi-card {
-            background: #fff;
-            padding: 28px 24px;
-            border-radius: 24px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            background: white;
+            padding: 30px 28px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s;
+        }
+
+        .testi-card:hover {
+            transform: translateY(-5px);
+            border-color: #f9a82660;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
         .testi-card .stars {
             color: #f9a826;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
         }
 
         .testi-card p {
             font-style: italic;
             color: #333;
+            line-height: 1.7;
         }
 
         .testi-card .author {
             font-weight: 700;
-            margin-top: 14px;
+            margin-top: 16px;
             color: #4A90D9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* ===== CTA ===== */
+        .testi-card .author .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f9a826, #f76b8a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ===== CTA SECTION ===== */
         .cta {
-            padding: 60px 0;
+            padding: 70px 0;
             background: linear-gradient(135deg, #1a2a4a 0%, #2a4a7a 100%);
             color: #fff;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '🎈 🎨 📚 ✏️ 🎉';
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            font-size: 3rem;
+            opacity: 0.05;
+            letter-spacing: 30px;
+            white-space: nowrap;
         }
 
         .cta h2 {
-            font-size: 2.4rem;
-            font-weight: 800;
+            font-size: 2.6rem;
+            font-weight: 700;
         }
 
         .cta p {
             font-size: 1.2rem;
             opacity: 0.9;
-            margin: 16px 0 30px;
+            margin: 16px 0 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta .btn-primary {
-            background: #f9a826;
-            padding: 16px 48px;
+            background: linear-gradient(135deg, #f9a826, #f76b8a);
+            padding: 16px 50px;
             font-size: 1.2rem;
+            box-shadow: 0 6px 30px rgba(249, 168, 38, 0.3);
         }
 
         .cta .btn-primary:hover {
-            background: #e6951a;
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 8px 40px rgba(249, 168, 38, 0.4);
         }
 
         /* ===== FOOTER ===== */
         .footer {
             background: #1a2a4a;
             color: #ccc;
-            padding: 40px 0 20px;
+            padding: 50px 0 20px;
         }
 
         .footer .container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
         }
 
         .footer-col h5 {
             color: #fff;
             font-size: 1.2rem;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+            font-weight: 700;
         }
 
         .footer-col p,
         .footer-col a {
             color: #bbb;
-            line-height: 2;
+            line-height: 2.2;
             font-size: 0.95rem;
+            display: block;
+            transition: color 0.2s;
         }
 
         .footer-col a:hover {
             color: #f9a826;
         }
 
+        .footer-col .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-col .social-icons a {
+            font-size: 1.5rem;
+            color: #bbb;
+            transition: all 0.2s;
+        }
+
+        .footer-col .social-icons a:hover {
+            color: #f9a826;
+            transform: translateY(-3px);
+        }
+
         .footer-bottom {
             text-align: center;
-            padding-top: 24px;
-            margin-top: 24px;
+            padding-top: 30px;
+            margin-top: 30px;
             border-top: 1px solid #2a3a5a;
             font-size: 0.9rem;
             color: #888;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom .heart {
+            color: #f76b8a;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -431,6 +687,7 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+
             .hero-buttons {
                 justify-content: center;
             }
@@ -441,7 +698,7 @@
                 width: 100%;
                 gap: 12px;
                 padding: 20px 0 10px;
-                border-top: 1px solid #eee;
+                border-top: 2px solid #f9a82630;
                 margin-top: 16px;
             }
 
@@ -456,13 +713,39 @@
             .nav-actions .btn-outline {
                 display: none;
             }
+
+            .float-icon {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 500px) {
             .hero-text h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
-            .section-title {
+
+            .stat-item {
+                min-width: 100px;
+                padding: 10px 15px;
+            }
+
+            .stat-item h3 {
+                font-size: 1.6rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
                 font-size: 1.8rem;
             }
         }
@@ -470,19 +753,28 @@
 </head>
 <body>
 
+    <!-- ===== DECORATIVE BACKGROUND SHAPES ===== -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <i class="fas fa-child"></i> Belajar<span>Ceria</span>
+                <i class="fas fa-child" style="color:#f9a826;"></i>
+                Belajar<span>Ceria</span>
             </div>
 
             <div class="nav-links" id="navLinks">
-                <a href="#">Beranda</a>
-                <a href="#">Produk</a>
-                <a href="#">Tentang</a>
-                <a href="#">Blog</a>
-                <a href="#">Kontak</a>
+                <a href="#">🏠 Beranda</a>
+                <a href="#">📚 Produk</a>
+                <a href="#">💡 Tentang</a>
+                <a href="#">📝 Blog</a>
+                <a href="#">📞 Kontak</a>
             </div>
 
             <div class="nav-actions">
@@ -499,11 +791,14 @@
     <section class="hero">
         <div class="container">
             <div class="hero-text">
-                <div class="badge"><i class="fas fa-rocket"></i> Promo Spesial Akhir Tahun</div>
-                <h1>Belajar Jadi <span class="highlight">Menyenangkan</span> & Kreatif</h1>
+                <div class="badge">🎉 Promo Spesial Akhir Tahun</div>
+                <h1>
+                    Belajar Jadi <br>
+                    <span class="highlight">Menyenangkan</span> & Kreatif
+                </h1>
                 <p>
-                    Ribuan worksheet, flashcard, dan e-book interaktif untuk anak TK & SD.
-                    Dukung tumbuh kembang si kecil dengan cara yang seru!
+                    🌟 Ribuan worksheet, flashcard, dan e-book interaktif untuk anak TK & SD.
+                    Dukung tumbuh kembang si kecil dengan cara yang seru dan penuh warna!
                 </p>
                 <div class="hero-buttons">
                     <a href="#" class="btn-primary"><i class="fas fa-store"></i> Lihat Produk</a>
@@ -511,7 +806,10 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://placehold.co/600x400/4A90D9/FFFFFF?text=BelajarCeria.id" alt="Belajar Ceria" />
+                <img src="https://placehold.co/600x400/4A90D9/FFFFFF?text=🎨+Belajar+Ceria+🏫" alt="Belajar Ceria Illustration" class="illustration" />
+                <div class="float-icon float-icon-1">🌟</div>
+                <div class="float-icon float-icon-2">🎈</div>
+                <div class="float-icon float-icon-3">📚</div>
             </div>
         </div>
     </section>
@@ -520,18 +818,22 @@
     <section class="stats">
         <div class="container">
             <div class="stat-item">
+                <span class="emoji">📚</span>
                 <h3>500+</h3>
                 <p>Produk Digital</p>
             </div>
             <div class="stat-item">
+                <span class="emoji">👨‍👩‍👧‍👦</span>
                 <h3>1.200+</h3>
                 <p>Orang Tua Percaya</p>
             </div>
             <div class="stat-item">
+                <span class="emoji">⭐</span>
                 <h3>4.8★</h3>
                 <p>Rating Rata-rata</p>
             </div>
             <div class="stat-item">
+                <span class="emoji">💰</span>
                 <h3>100%</h3>
                 <p>MRR Ready</p>
             </div>
@@ -541,15 +843,19 @@
     <!-- ========== PRODUK UNGGULAN ========== -->
     <section class="products">
         <div class="container">
-            <h2 class="section-title">🌟 Produk Unggulan</h2>
-            <p class="section-sub">Pilihan terbaik untuk si kecil, siap cetak & pakai langsung</p>
+            <h2 class="section-title">
+                <span class="emoji-big">🌟</span> Produk Unggulan
+            </h2>
+            <p class="section-sub">
+                Pilihan terbaik untuk si kecil, siap cetak & pakai langsung
+            </p>
 
             <div class="product-grid">
                 <!-- Card 1 -->
                 <div class="product-card">
-                    <div class="icon"><i class="fas fa-pencil-alt"></i></div>
+                    <span class="icon">✏️</span>
                     <h4>Worksheet Calistung</h4>
-                    <p style="color:#666; font-size:0.95rem;">Baca, tulis, hitung dengan gambar lucu</p>
+                    <p class="desc">Baca, tulis, hitung dengan gambar lucu</p>
                     <div class="price">Rp29.000</div>
                     <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
                     <div class="badge-mrr">MRR Ready</div>
@@ -557,9 +863,9 @@
 
                 <!-- Card 2 -->
                 <div class="product-card">
-                    <div class="icon"><i class="fas fa-book-open"></i></div>
+                    <span class="icon">📖</span>
                     <h4>E-Book Dongeng</h4>
-                    <p style="color:#666; font-size:0.95rem;">20 cerita interaktif + aktivitas</p>
+                    <p class="desc">20 cerita interaktif + aktivitas seru</p>
                     <div class="price">Rp45.000</div>
                     <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
                     <div class="badge-mrr">MRR Ready</div>
@@ -567,9 +873,9 @@
 
                 <!-- Card 3 -->
                 <div class="product-card">
-                    <div class="icon"><i class="fas fa-cards"></i></div>
+                    <span class="icon">🃏</span>
                     <h4>Flashcard Hewan</h4>
-                    <p style="color:#666; font-size:0.95rem;">50 kartu warna-warni cetak sendiri</p>
+                    <p class="desc">50 kartu warna-warni cetak sendiri</p>
                     <div class="price">Rp18.000</div>
                     <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
                     <div class="badge-mrr">MRR Ready</div>
@@ -577,12 +883,12 @@
 
                 <!-- Card 4 -->
                 <div class="product-card">
-                    <div class="icon"><i class="fas fa-cubes"></i></div>
+                    <span class="icon">🎁</span>
                     <h4>Paket Bundle 12 Produk</h4>
-                    <p style="color:#666; font-size:0.95rem;">Hemat 60% + Lisensi Jual Ulang</p>
+                    <p class="desc">Hemat 60% + Lisensi Jual Ulang</p>
                     <div class="price">Rp119.000</div>
                     <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
-                    <div class="badge-mrr">★ Best Seller</div>
+                    <div class="badge-popular">⭐ Best Seller</div>
                 </div>
             </div>
         </div>
@@ -591,24 +897,35 @@
     <!-- ========== TESTIMONI ========== -->
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">💬 Apa Kata Mereka?</h2>
+            <h2 class="section-title">
+                <span class="emoji-big">💬</span> Apa Kata Mereka?
+            </h2>
             <p class="section-sub">Dari orang tua dan pendidik yang sudah merasakan manfaatnya</p>
 
             <div class="testi-grid">
                 <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p>"Anak saya jadi semangat belajar. Worksheet-nya menarik dan mudah dicetak. Rekomendasi banget!"</p>
-                    <div class="author">— Ibu Rina, Jakarta</div>
+                    <div class="author">
+                        <span class="avatar">R</span>
+                        Ibu Rina, Jakarta
+                    </div>
                 </div>
                 <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p>"Sebagai guru TK, saya pakai flashcard dari sini. Anak-anak sangat antusias dan cepat hafal."</p>
-                    <div class="author">— Bu Dewi, Bandung</div>
+                    <div class="author">
+                        <span class="avatar">D</span>
+                        Bu Dewi, Bandung
+                    </div>
                 </div>
                 <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <div class="stars">⭐⭐⭐⭐½</div>
                     <p>"Paket bundlenya sangat lengkap dan murah. Saya bisa jual ulang produknya, tambah penghasilan!"</p>
-                    <div class="author">— Kak Nisa, Reseller</div>
+                    <div class="author">
+                        <span class="avatar">N</span>
+                        Kak Nisa, Reseller
+                    </div>
                 </div>
             </div>
         </div>
@@ -617,8 +934,8 @@
     <!-- ========== CTA ========== -->
     <section class="cta">
         <div class="container">
-            <h2>Siap Memulai Petualangan Belajar?</h2>
-            <p>Dapatkan akses instan ke semua produk digital berkualitas untuk anak Anda.</p>
+            <h2>🚀 Siap Memulai Petualangan Belajar?</h2>
+            <p>Dapatkan akses instan ke semua produk digital berkualitas untuk anak Anda. Belajar jadi seru dan penuh warna!</p>
             <a href="#" class="btn-primary"><i class="fas fa-arrow-right"></i> Lihat Semua Produk</a>
         </div>
     </section>
@@ -627,36 +944,38 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-col">
-                <h5><i class="fas fa-child"></i> BelajarCeria.id</h5>
-                <p>Platform produk digital edukasi untuk anak TK & SD. Belajar jadi seru!</p>
-                <p style="margin-top:8px;">
-                    <a href="#"><i class="fab fa-instagram"></i></a> &nbsp;
-                    <a href="#"><i class="fab fa-youtube"></i></a> &nbsp;
+                <h5><i class="fas fa-child" style="color:#f9a826;"></i> BelajarCeria.id</h5>
+                <p>Platform produk digital edukasi untuk anak TK & SD. Belajar jadi seru dan penuh warna!</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-tiktok"></i></a>
-                </p>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
             </div>
             <div class="footer-col">
-                <h5>Tautan</h5>
-                <a href="#">Tentang Kami</a><br />
-                <a href="#">Kebijakan Privasi</a><br />
-                <a href="#">Syarat & Ketentuan</a><br />
+                <h5>📌 Tautan</h5>
+                <a href="#">Tentang Kami</a>
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Syarat & Ketentuan</a>
                 <a href="#">FAQ</a>
             </div>
             <div class="footer-col">
-                <h5>Produk</h5>
-                <a href="#">Worksheet</a><br />
-                <a href="#">Flashcard</a><br />
-                <a href="#">E-Book</a><br />
+                <h5>📚 Produk</h5>
+                <a href="#">Worksheet</a>
+                <a href="#">Flashcard</a>
+                <a href="#">E-Book</a>
                 <a href="#">Paket Bundle</a>
             </div>
             <div class="footer-col">
-                <h5>Hubungi Kami</h5>
+                <h5>📞 Hubungi Kami</h5>
                 <p><i class="fas fa-envelope"></i> halo@belajarceria.id</p>
                 <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                <p><i class="fas fa-clock"></i> Senin-Jumat, 08:00-17:00</p>
             </div>
         </div>
-        <div class="footer-bottom container">
-            &copy; 2026 BelajarCeria.id — Dibuat dengan <i class="fas fa-heart" style="color:#f9a826;"></i> untuk anak Indonesia.
+        <div class="footer-bottom">
+            &copy; 2026 BelajarCeria.id — Dibuat dengan <span class="heart">❤️</span> untuk anak Indonesia.
         </div>
     </footer>
 
@@ -674,7 +993,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-                if (href !== "#") {
+                if (href !== "#" && href !== "") {
                     e.preventDefault();
                     document.querySelector(href).scrollIntoView({
                         behavior: 'smooth'
@@ -683,22 +1002,42 @@
             });
         });
 
-        // ===== Interaksi produk (alert demo) =====
+        // ===== Interaksi produk (demo) =====
         document.querySelectorAll('.product-card .btn-small').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 const productName = this.closest('.product-card').querySelector('h4').innerText;
-                alert(`🛒 Produk "${productName}" ditambahkan ke keranjang! (Demo interaksi)`);
+                alert(`🛒 Produk "${productName}" ditambahkan ke keranjang! 🎉`);
             });
         });
 
         // ===== Tombol CTA demo =====
         document.querySelector('.cta .btn-primary')?.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('🚀 Ayo jelajahi semua produk seru kami! (Demo)');
+            alert('🚀 Ayo jelajahi semua produk seru kami! 😍');
         });
 
-        console.log('🎉 BelajarCeria.id — Website Edukasi Anak Siap!');
+        // ===== Animasi counter sederhana (efek) =====
+        document.querySelectorAll('.stat-item h3').forEach(counter => {
+            const text = counter.innerText;
+            const number = parseInt(text.replace(/[^0-9]/g, ''));
+            if (!isNaN(number)) {
+                let current = 0;
+                const increment = Math.ceil(number / 40);
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= number) {
+                        counter.innerText = text;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = current + (text.includes('+') ? '+' : '');
+                    }
+                }, 30);
+            }
+        });
+
+        console.log('🎉 BelajarCeria.id — Website Edukasi Anak Siap! 🌟');
+        console.log('✨ Selamat belajar dan bermain! ✨');
     </script>
 
 </body>
