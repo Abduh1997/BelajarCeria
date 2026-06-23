@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BelajarCeria.id - Platform Produk Digital Edukasi Anak</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Font: Nunito (ramah anak) -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fefcf3;
+            color: #2d2d2d;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #f9a826;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: #4A90D9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            transition: color 0.2s;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a:hover {
+            color: #f9a826;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-outline {
+            padding: 8px 20px;
+            border: 2px solid #4A90D9;
+            border-radius: 30px;
+            color: #4A90D9;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #4A90D9;
+            color: #fff;
+        }
+
+        .btn-primary {
+            padding: 8px 24px;
+            background: #f9a826;
+            border-radius: 30px;
+            color: #fff;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #e6951a;
+            transform: scale(1.02);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #4A90D9;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, #fefcf3 0%, #f0f7ff 100%);
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1 1 45%;
+        }
+
+        .hero-text .badge {
+            background: #f9a82620;
+            color: #f9a826;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #1a2a4a;
+        }
+
+        .hero-text h1 .highlight {
+            color: #f9a826;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin: 20px 0 30px;
+            color: #555;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-buttons .btn-primary {
+            padding: 14px 36px;
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons .btn-outline {
+            padding: 12px 32px;
+            font-size: 1.1rem;
+        }
+
+        .hero-image {
+            flex: 1 1 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            width: 500px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            background: #fff;
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.2rem;
+            color: #4A90D9;
+        }
+
+        .stat-item p {
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* ===== PRODUK UNGGULAN ===== */
+        .products {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #1a2a4a;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 24px 20px 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            border-color: #f9a82660;
+        }
+
+        .product-card .icon {
+            font-size: 2.8rem;
+            color: #4A90D9;
+            margin-bottom: 12px;
+        }
+
+        .product-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .product-card .price {
+            color: #f9a826;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin: 8px 0 16px;
+        }
+
+        .product-card .btn-small {
+            background: #4A90D9;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-block;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .product-card .btn-small:hover {
+            background: #3a7bc8;
+        }
+
+        .badge-mrr {
+            background: #f9a826;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== TESTIMONI ===== */
+        .testimonials {
+            background: #f0f7ff;
+            padding: 60px 0;
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .testi-card {
+            background: #fff;
+            padding: 28px 24px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .testi-card .stars {
+            color: #f9a826;
+            margin-bottom: 10px;
+        }
+
+        .testi-card p {
+            font-style: italic;
+            color: #333;
+        }
+
+        .testi-card .author {
+            font-weight: 700;
+            margin-top: 14px;
+            color: #4A90D9;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #1a2a4a 0%, #2a4a7a 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 16px 0 30px;
+        }
+
+        .cta .btn-primary {
+            background: #f9a826;
+            padding: 16px 48px;
+            font-size: 1.2rem;
+        }
+
+        .cta .btn-primary:hover {
+            background: #e6951a;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1a2a4a;
+            color: #ccc;
+            padding: 40px 0 20px;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col h5 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: #bbb;
+            line-height: 2;
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: #f9a826;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 1px solid #2a3a5a;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero .container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+                padding: 20px 0 10px;
+                border-top: 1px solid #eee;
+                margin-top: 16px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-actions .btn-outline {
+                display: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-child"></i> Belajar<span>Ceria</span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#">Beranda</a>
+                <a href="#">Produk</a>
+                <a href="#">Tentang</a>
+                <a href="#">Blog</a>
+                <a href="#">Kontak</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#" class="btn-outline"><i class="fas fa-user"></i> Masuk</a>
+                <a href="#" class="btn-primary"><i class="fas fa-cart-plus"></i> Keranjang</a>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <div class="badge"><i class="fas fa-rocket"></i> Promo Spesial Akhir Tahun</div>
+                <h1>Belajar Jadi <span class="highlight">Menyenangkan</span> & Kreatif</h1>
+                <p>
+                    Ribuan worksheet, flashcard, dan e-book interaktif untuk anak TK & SD.
+                    Dukung tumbuh kembang si kecil dengan cara yang seru!
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary"><i class="fas fa-store"></i> Lihat Produk</a>
+                    <a href="#" class="btn-outline"><i class="fas fa-play-circle"></i> Lihat Demo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://placehold.co/600x400/4A90D9/FFFFFF?text=BelajarCeria.id" alt="Belajar Ceria" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Produk Digital</p>
+            </div>
+            <div class="stat-item">
+                <h3>1.200+</h3>
+                <p>Orang Tua Percaya</p>
+            </div>
+            <div class="stat-item">
+                <h3>4.8★</h3>
+                <p>Rating Rata-rata</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>MRR Ready</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUK UNGGULAN ========== -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">🌟 Produk Unggulan</h2>
+            <p class="section-sub">Pilihan terbaik untuk si kecil, siap cetak & pakai langsung</p>
+
+            <div class="product-grid">
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-pencil-alt"></i></div>
+                    <h4>Worksheet Calistung</h4>
+                    <p style="color:#666; font-size:0.95rem;">Baca, tulis, hitung dengan gambar lucu</p>
+                    <div class="price">Rp29.000</div>
+                    <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
+                    <div class="badge-mrr">MRR Ready</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-book-open"></i></div>
+                    <h4>E-Book Dongeng</h4>
+                    <p style="color:#666; font-size:0.95rem;">20 cerita interaktif + aktivitas</p>
+                    <div class="price">Rp45.000</div>
+                    <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
+                    <div class="badge-mrr">MRR Ready</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-cards"></i></div>
+                    <h4>Flashcard Hewan</h4>
+                    <p style="color:#666; font-size:0.95rem;">50 kartu warna-warni cetak sendiri</p>
+                    <div class="price">Rp18.000</div>
+                    <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
+                    <div class="badge-mrr">MRR Ready</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-cubes"></i></div>
+                    <h4>Paket Bundle 12 Produk</h4>
+                    <p style="color:#666; font-size:0.95rem;">Hemat 60% + Lisensi Jual Ulang</p>
+                    <div class="price">Rp119.000</div>
+                    <a href="#" class="btn-small"><i class="fas fa-shopping-bag"></i> Beli</a>
+                    <div class="badge-mrr">★ Best Seller</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONI ========== -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">💬 Apa Kata Mereka?</h2>
+            <p class="section-sub">Dari orang tua dan pendidik yang sudah merasakan manfaatnya</p>
+
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Anak saya jadi semangat belajar. Worksheet-nya menarik dan mudah dicetak. Rekomendasi banget!"</p>
+                    <div class="author">— Ibu Rina, Jakarta</div>
+                </div>
+                <div class="testi-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Sebagai guru TK, saya pakai flashcard dari sini. Anak-anak sangat antusias dan cepat hafal."</p>
+                    <div class="author">— Bu Dewi, Bandung</div>
+                </div>
+                <div class="testi-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p>"Paket bundlenya sangat lengkap dan murah. Saya bisa jual ulang produknya, tambah penghasilan!"</p>
+                    <div class="author">— Kak Nisa, Reseller</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta">
+        <div class="container">
+            <h2>Siap Memulai Petualangan Belajar?</h2>
+            <p>Dapatkan akses instan ke semua produk digital berkualitas untuk anak Anda.</p>
+            <a href="#" class="btn-primary"><i class="fas fa-arrow-right"></i> Lihat Semua Produk</a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h5><i class="fas fa-child"></i> BelajarCeria.id</h5>
+                <p>Platform produk digital edukasi untuk anak TK & SD. Belajar jadi seru!</p>
+                <p style="margin-top:8px;">
+                    <a href="#"><i class="fab fa-instagram"></i></a> &nbsp;
+                    <a href="#"><i class="fab fa-youtube"></i></a> &nbsp;
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>Tautan</h5>
+                <a href="#">Tentang Kami</a><br />
+                <a href="#">Kebijakan Privasi</a><br />
+                <a href="#">Syarat & Ketentuan</a><br />
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h5>Produk</h5>
+                <a href="#">Worksheet</a><br />
+                <a href="#">Flashcard</a><br />
+                <a href="#">E-Book</a><br />
+                <a href="#">Paket Bundle</a>
+            </div>
+            <div class="footer-col">
+                <h5>Hubungi Kami</h5>
+                <p><i class="fas fa-envelope"></i> halo@belajarceria.id</p>
+                <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            &copy; 2026 BelajarCeria.id — Dibuat dengan <i class="fas fa-heart" style="color:#f9a826;"></i> untuk anak Indonesia.
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // ===== Hamburger Menu =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // ===== Smooth scroll (opsional) =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== "#") {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== Interaksi produk (alert demo) =====
+        document.querySelectorAll('.product-card .btn-small').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productName = this.closest('.product-card').querySelector('h4').innerText;
+                alert(`🛒 Produk "${productName}" ditambahkan ke keranjang! (Demo interaksi)`);
+            });
+        });
+
+        // ===== Tombol CTA demo =====
+        document.querySelector('.cta .btn-primary')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('🚀 Ayo jelajahi semua produk seru kami! (Demo)');
+        });
+
+        console.log('🎉 BelajarCeria.id — Website Edukasi Anak Siap!');
+    </script>
+
+</body>
+</html>
